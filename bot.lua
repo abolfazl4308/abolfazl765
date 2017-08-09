@@ -264,35 +264,7 @@ function tdcli_update_callback(data)
 						return send(msg.chat_id_, msg.id_, "فرایند افزودن خودکار مخاطبین به اشتراک  گذاشته شده فعال شد.")
 					end
 				
-				elseif text:match("^(تازه سازی ربات)$") then
-					get_bot()
-					return send(msg.chat_id_, msg.id_, "<i>مشخصات فردی ربات بروز شد.</i>")
-				elseif text:match("ریپورت") then
-					tdcli_function ({
-						ID = "SendBotStartMessage",
-						bot_user_id_ = 178220800,
-						chat_id_ = 178220800,
-						parameter_ = 'start'
-					}, dl_cb, nil)
-				elseif text:match("^(/reload)$") then
-					return reload(msg.chat_id_,msg.id_)
-				elseif text:match("^بروزرسانی ربات$") then
-					io.popen("git fetch --all && git reset --hard origin/persian && git pull origin persian && chmod +x bot"):read("*all")
-					local text,ok = io.open("bot.lua",'r'):read('*a'):gsub("BOT%-ID",BOT-ID)
-					io.open("bot-BOT-ID.lua",'w'):write(text):close()
-					return reload(msg.chat_id_,msg.id_)
-				elseif text:match("^همگام سازی با تبچی$") then
-					local botid = BOT-ID - 1
-					redis:sunionstore("botBOT-IDall","tabchi:"..tostring(botid)..":all")
-					redis:sunionstore("botBOT-IDusers","tabchi:"..tostring(botid)..":pvis")
-					redis:sunionstore("botBOT-IDgroups","tabchi:"..tostring(botid)..":groups")
-					redis:sunionstore("botBOT-IDsupergroups","tabchi:"..tostring(botid)..":channels")
-					redis:sunionstore("botBOT-IDsavedlinks","tabchi:"..tostring(botid)..":savedlinks")
-					return send(msg.chat_id_, msg.id_, "<b>همگام سازی اطلاعات با تبچی شماره</b><code> "..tostring(botid).." </code><b>انجام شد.</b>")
-				elseif text:match("^(لیست) (.*)$") then
-					local matches = text:match("^لیست (.*)$")
-					local naji
-					end
+				
 				
 					if matches == "مخاطبین" then
 						return tdcli_function({
