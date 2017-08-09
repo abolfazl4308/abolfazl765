@@ -292,6 +292,8 @@ function tdcli_update_callback(data)
 				elseif text:match("^(لیست) (.*)$") then
 					local matches = text:match("^لیست (.*)$")
 					local naji
+					end
+				
 					if matches == "مخاطبین" then
 						return tdcli_function({
 							ID = "SearchContacts",
