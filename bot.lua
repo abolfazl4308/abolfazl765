@@ -263,9 +263,6 @@ function tdcli_update_callback(data)
 						redis:set("botBOT-IDsavecontacts", true)
 						return send(msg.chat_id_, msg.id_, "فرایند افزودن خودکار مخاطبین به اشتراک  گذاشته شده فعال شد.")
 					end
-				
-				
-				
 					if matches == "مخاطبین" then
 						return tdcli_function({
 							ID = "SearchContacts",
